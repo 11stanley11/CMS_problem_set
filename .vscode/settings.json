@@ -1,6 +1,15 @@
 {
     "files.associations": {
         "cmath": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "chrono": "cpp",
+        "deque": "cpp",
+        "string": "cpp",
+        "vector": "cpp",
+        "bitset": "cpp",
+        "algorithm": "cpp",
+        "format": "cpp",
+        "iomanip": "cpp",
+        "iosfwd": "cpp"
     }
 }

@@ -1,5 +1,5 @@
 /*
-very good
+塞不下那麼大的數
 */
 
 #pragma GCC optimize ("O2")
@@ -25,42 +25,31 @@ using namespace std;
 using namespace std;
 using namespace chrono;
 
-int fastPower(int base, int exp, int mod) {
-    int result = 1;
-    while (exp > 0) {
-        if (exp % 2 == 1) result = (result * base) % mod;
-        base = (base * base) % mod;
-        exp /= 2;
-    }
-    return result;
-}
-
-
 signed main() {
     input; // annotate before submitting
     boost;
     
-    ofstream outfile("../compare1.txt");
     auto start = high_resolution_clock::now();
 
     int t;
-    int a, b, k;
+    double a, b, k;
     cin >> t;
     while(t--) {
         cin >> a >> b >> k;
-        int mod = pow(10, k);
-        int result = fastPower(a, b, mod);
+        long double result = 1;
+        while(b--) result *= a;
+        result = fmod(result, pow(10, k));
         if (result == 0) {
-            outfile << string(k, '0') << endl; 
+            cout << string(k, '0') << endl; 
             continue;
         }
-        rep(i, 0, k - floor(log10(result) + 1), 1) outfile << 0;
-        outfile << result << endl;
+        rep(i, 0, k - floor(log10(result) + 1), 1) cout << 0;
+        cout << result << endl;
     }
 
     auto end = high_resolution_clock::now();
     duration<double> elapsed = end - start;
-    outfile << "time: " << elapsed.count() << "s" << endl;
+    cout << "time: " << elapsed.count() << "s" << endl;
 
     return 0;
 }
