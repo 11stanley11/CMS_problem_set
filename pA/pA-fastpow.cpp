@@ -37,11 +37,11 @@ int fastPower(int base, int exp, int mod) {
 
 
 signed main() {
-    input; // annotate before submitting
+    // input; // annotate before submitting
     boost;
     
-    ofstream outfile("../compare1.txt");
-    auto start = high_resolution_clock::now();
+    // ofstream outfile("../compare1.txt");
+    // auto start = high_resolution_clock::now();
 
     int t;
     int a, b, k;
@@ -51,16 +51,16 @@ signed main() {
         int mod = pow(10, k);
         int result = fastPower(a, b, mod);
         if (result == 0) {
-            outfile << string(k, '0') << endl; 
+            cout << string(k, '0') << endl; 
             continue;
         }
-        rep(i, 0, k - floor(log10(result) + 1), 1) outfile << 0;
-        outfile << result << endl;
+        rep(i, 0, k - floor(log10(result) + 1), 1) cout << 0;
+        cout << result << endl;
     }
 
-    auto end = high_resolution_clock::now();
-    duration<double> elapsed = end - start;
-    outfile << "time: " << elapsed.count() << "s" << endl;
+    // auto end = high_resolution_clock::now();
+    // duration<double> elapsed = end - start;
+    // outfile << "time: " << elapsed.count() << "s" << endl;
 
     return 0;
 }
