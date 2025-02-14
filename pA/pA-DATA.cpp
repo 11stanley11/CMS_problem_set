@@ -27,16 +27,18 @@ signed main() {
     
 
     int t = 10000; outfile << t << endl;
-    long double abmin = pow(10, 3), abmax = pow(10, 300); 
+    long double abmin = pow(10, 100), abmax = pow(10, 300); 
     random_device rd;
     mt19937 gen(rd());
-    uniform_int_distribution<> distrib(1, 10000);
+    uniform_int_distribution<> distrib_a(1, 1000);
+    uniform_int_distribution<> distrib_b(1, 1000000);
+    uniform_int_distribution<> distrib_k(1, 4);
 
     while(true) {
-        int ra = distrib(gen);
-        int rb = distrib(gen);
-        int rk = distrib(gen);
-        if(rk <= 6 && pow(ra, rb) >= pow(10, rk)) {
+        int ra = distrib_a(gen);
+        int rb = distrib_b(gen);
+        int rk = distrib_k(gen); 
+        if(/*abmin <= pow(ra, rb) && pow(ra, rb) <= abmax &&*/ pow(ra, rb) >= pow(10, rk)) {
             outfile << ra << " " << rb << " " << rk << endl;
             t--;
         }
