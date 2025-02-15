@@ -26,11 +26,11 @@ using namespace std;
 using namespace chrono;
 
 signed main() {
-    input; // annotate before submitting
+    // input; // annotate before submitting
     boost;
     
     
-    auto start = high_resolution_clock::now();
+    // auto start = high_resolution_clock::now();
 
     int t;
     double a, b, k;
@@ -47,9 +47,9 @@ signed main() {
         cout << result << endl;
     }
 
-    auto end = high_resolution_clock::now();
-    duration<double> elapsed = end - start;
-    cout << "time: " << elapsed.count() << "s" << endl;
+    // auto end = high_resolution_clock::now();
+    // duration<double> elapsed = end - start;
+    // cout << "time: " << elapsed.count() << "s" << endl;
 
     return 0;
 }

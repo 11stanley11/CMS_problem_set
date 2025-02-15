@@ -25,11 +25,11 @@ using namespace std;
 using namespace chrono;
 
 signed main() {
-    input; // annotate before submitting
+    // input; // annotate before submitting
     boost;
     
-    ofstream outfile("../compare2.txt");
-    auto start = high_resolution_clock::now();
+    // ofstream cout("../compare2.txt");
+    // auto start = high_resolution_clock::now();
 
     int t;
     cin >> t;
@@ -63,12 +63,12 @@ signed main() {
         // 格式化輸出
         string result_str = to_string(result);
         while (result_str.length() < k) result_str = "0" + result_str;
-        outfile << result_str << endl;
+        cout << result_str << endl;
     }
 
-    auto end = high_resolution_clock::now();
-    duration<double> elapsed = end - start;
-    outfile << "time: " << elapsed.count() << "s" << endl;
+    // auto end = high_resolution_clock::now();
+    // duration<double> elapsed = end - start;
+    // cout << "time: " << elapsed.count() << "s" << endl;
 
     return 0;
 }

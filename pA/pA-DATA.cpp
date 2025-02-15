@@ -27,10 +27,10 @@ signed main() {
     
 
     int t = 100; outfile << t << endl;
-    long double abmin = pow(10, 0), abmax = pow(10, 100); 
+    long double abmin = pow(10, 0), abmax = pow(10, 10); 
     random_device rd;
     mt19937 gen(rd());
-    uniform_int_distribution<> distrib_a(1, 1000);
+    uniform_int_distribution<> distrib_a(1, 100);
     uniform_int_distribution<> distrib_b(1, 1000000);
     uniform_int_distribution<> distrib_k(1, 8);
 
