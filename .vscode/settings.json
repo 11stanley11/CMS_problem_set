@@ -10,6 +10,7 @@
         "algorithm": "cpp",
         "format": "cpp",
         "iomanip": "cpp",
-        "iosfwd": "cpp"
+        "iosfwd": "cpp",
+        "ostream": "cpp"
     }
 }

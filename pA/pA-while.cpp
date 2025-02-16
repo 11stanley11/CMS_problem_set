@@ -44,7 +44,7 @@ signed main() {
             continue;
         }
         rep(i, 0, k - floor(log10(result) + 1), 1) cout << 0;
-        cout << result << endl;
+        cout << fixed << setprecision(0) << result << endl;
     }
 
     // auto end = high_resolution_clock::now();
