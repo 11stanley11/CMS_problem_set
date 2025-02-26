@@ -24,18 +24,65 @@ using namespace std;
 using namespace std;
 using namespace chrono;
 
+const int MAXN = 2e5 + 5;
+pii arr[MAXN];
+int n, w;
+
+bool solve(int cur) {
+    int num = 0, sum = 0;
+    rep(i, 0, n, 1) {
+        if(arr[i].ss >= cur - 1) {
+            num++;
+            sum += arr[i].ff;
+            if(num >= cur) break;
+        }
+    }
+    if(sum <= w && num >= cur) return 1;
+    else return 0;
+}
+
+int binary_search(int left, int right) {
+    if(left == right - 1) return left;
+    int mid = (left + right) / 2;
+    if(solve(mid)) return binary_search(mid, right);
+    else return binary_search(left, mid);
+}
+
+// signed main() {
+//     input; // annotate before submitting
+//     boost;
+
+//     cin >> n >> w;
+//     rep(i, 0, n, 1) cin >> arr[i].ff;
+//     rep(i, 0, n, 1) cin >> arr[i].ss; 
+//     sort(arr, arr + n);
+
+//     cout << binary_search(0, n + 1);
+
+//     return 0;
+// }
+
 signed main() {
-    // input; // annotate before submitting
     boost;
-    
-    // ofstream cout("../compare2.txt");
-    // auto start = high_resolution_clock::now();
 
-        
+    int t = 8;
+    rep(i, 1, t+1, 1) {
+        string filename = "dataset/subtask-4/subtask-4-0" + to_string(i) + ".in";
+        FILE *fp = freopen(filename.c_str(), "r", stdin);
+        ofstream file("dataset/subtask-4/subtask-4-0" + to_string(i) + ".out");
 
-    // auto end = high_resolution_clock::now();
-    // duration<double> elapsed = end - start;
-    // cout << "time: " << elapsed.count() << "s" << endl;
+        cin >> n >> w;
+        rep(i, 0, n, 1) cin >> arr[i].ff;
+        rep(i, 0, n, 1) cin >> arr[i].ss; 
+        sort(arr, arr + n);
+
+        file << binary_search(0, n + 1);
+
+        fclose(fp);
+        freopen("CON", "r", stdin);
+        file.close();
+    }
 
     return 0;
 }
+
