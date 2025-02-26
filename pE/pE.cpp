@@ -48,41 +48,41 @@ int binary_search(int left, int right) {
     else return binary_search(left, mid);
 }
 
-// signed main() {
-//     input; // annotate before submitting
-//     boost;
-
-//     cin >> n >> w;
-//     rep(i, 0, n, 1) cin >> arr[i].ff;
-//     rep(i, 0, n, 1) cin >> arr[i].ss; 
-//     sort(arr, arr + n);
-
-//     cout << binary_search(0, n + 1);
-
-//     return 0;
-// }
-
 signed main() {
+    // input; // annotate before submitting
     boost;
 
-    int t = 8;
-    rep(i, 1, t+1, 1) {
-        string filename = "dataset/subtask-4/subtask-4-0" + to_string(i) + ".in";
-        FILE *fp = freopen(filename.c_str(), "r", stdin);
-        ofstream file("dataset/subtask-4/subtask-4-0" + to_string(i) + ".out");
+    cin >> n >> w;
+    rep(i, 0, n, 1) cin >> arr[i].ff;
+    rep(i, 0, n, 1) cin >> arr[i].ss; 
+    sort(arr, arr + n);
 
-        cin >> n >> w;
-        rep(i, 0, n, 1) cin >> arr[i].ff;
-        rep(i, 0, n, 1) cin >> arr[i].ss; 
-        sort(arr, arr + n);
-
-        file << binary_search(0, n + 1);
-
-        fclose(fp);
-        freopen("CON", "r", stdin);
-        file.close();
-    }
+    cout << binary_search(0, n + 1);
 
     return 0;
 }
+
+// signed main() {
+//     boost;
+
+//     int t = 8;
+//     rep(i, 1, t+1, 1) {
+//         string filename = "dataset/subtask-4/subtask-4-0" + to_string(i) + ".in";
+//         FILE *fp = freopen(filename.c_str(), "r", stdin);
+//         ofstream file("dataset/subtask-4/subtask-4-0" + to_string(i) + ".out");
+
+//         cin >> n >> w;
+//         rep(i, 0, n, 1) cin >> arr[i].ff;
+//         rep(i, 0, n, 1) cin >> arr[i].ss; 
+//         sort(arr, arr + n);
+
+//         file << binary_search(0, n + 1);
+
+//         fclose(fp);
+//         freopen("CON", "r", stdin);
+//         file.close();
+//     }
+
+//     return 0;
+// }
 
