@@ -1,6 +1,9 @@
 Username: admin
 Password: bxkspc
 
+Username: admin2
+Password: qzjbnw
+
 Username: testuser1
 Password: testps1
 
