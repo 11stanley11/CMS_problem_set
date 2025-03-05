@@ -23,6 +23,73 @@ by 三忠 44 許友懌, 45許仲亨
 >> ```
 >> 複雜度 $\mathcal O(\log(n))$
 
+## pB. 寶石遊戲
+### Subtask 1
+兩個人字串一樣<br>
+-> 柯南猜過的 基德也一定猜過<br>
+-> 一定會比到平手<br>
+-> 柯南不可能贏
+### Subtask 2
+26種字母硬排```26!```種排序，用```next_permutation()```函式暴力模擬<br>
+時間複雜度 $\mathcal O(n\cdot|c|!)$
+### Subtask 3
+因為猜一次會把全部同樣的字母都寫出來，所以相同字母出現的次數沒有關係<br>
+贏的關鍵是「我的字串有你的字串沒有的字母」<br>
+就有機會在他把我的猜完之前把他的猜完<br>
+以下提供兩種解法
+>布林陣列記錄並檢查
+>```cpp
+>#include <bits/stdc++.h>
+>signed main()
+>int n, m;
+>string A, B;
+>bool la[26], lb[26];
+>{   
+>    std::ios::sync_with_stdio(false); std::cin.tie(0);
+>    cin >> n >> m >> A >> B;
+>    for(char c : A){
+>        la[c-'a'] = true;
+>    }
+>    for(char c : B){
+>        lb[c-'a'] = true;
+>    }
+>    for(int i=0; i<26; i++){
+>        if(la[i] && !lb[i]){
+>            cout << "Yes";
+>            return 0;
+>        }
+>    }
+>    cout << "No";
+>    
+>    return 0;
+>}
+>```
+
+>set特性排除重複
+>```
+>#include<bits/stdc++.h>
+>using namespace std;
+>int main(){
+>    ios::sync_with_stdio(0); cin.tie(0);
+>
+>    int n, m;
+>    string A, B;
+>    cin >> n >> m >> A >> B;
+>    set<char> s;
+>    for(int i=0; i<n; i++){
+>        s.insert(A[i]);
+>    }
+>    for(int i=0; i<m; i++){
+>        s.erase(B[i]);
+>    }
+>    cout << (s.empty() ? "No" : "Yes");
+>
+>    return 0;
+>}
+>```
+
+## pC. 
+
 ## pE. 東山水果攤
 > 解析參考 https://hackmd.io/@wiwiho/sprout2024-exam-A
 ### Subtask 1
