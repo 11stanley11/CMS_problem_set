@@ -48,6 +48,20 @@ int binary_search(int left, int right) {
     else return binary_search(left, mid);
 }
 
+// signed main() {
+//     // input; // annotate before submitting
+//     boost;
+
+//     cin >> n >> w;
+//     rep(i, 0, n, 1) cin >> arr[i].ff;
+//     rep(i, 0, n, 1) cin >> arr[i].ss; 
+//     sort(arr, arr + n);
+
+//     cout << binary_search(0, n + 1);
+
+//     return 0;
+// }
+
 signed main() {
     // input; // annotate before submitting
     boost;
@@ -57,8 +71,13 @@ signed main() {
     rep(i, 0, n, 1) cin >> arr[i].ss; 
     sort(arr, arr + n);
 
-    cout << binary_search(0, n + 1);
+    int ans = 0;
+    rep(i, 0, n + 1, 1) {
+        if(solve(i)) ans = i;
+        else break;
+    }
 
+    cout << ans;
     return 0;
 }
 

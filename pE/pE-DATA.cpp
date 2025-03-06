@@ -29,8 +29,8 @@ signed main() {
     mt19937 gen(rd());
     uniform_int_distribution<> distrib_n(1, 2e5);
     uniform_int_distribution<> distrib_w(0, 1e9);
-    uniform_int_distribution<> distrib_c(0, 1e9);
-    uniform_int_distribution<> distrib_t(0, 1e9);
+    uniform_int_distribution<> distrib_logc(1, 9);
+    uniform_int_distribution<> distrib_logt(1, 9);
 
     int t = 8; 
     rep(i, 1, t+1, 1) {
@@ -39,11 +39,15 @@ signed main() {
         int w = distrib_w(gen);
         file << n << " " << w << endl;
         rep(i, 0, n, 1) {
+            int logc = distrib_logc(gen);
+            uniform_int_distribution<> distrib_c((int)pow(10, logc-1), (int)pow(10, logc));
             int c = distrib_c(gen);
             file << c << " ";
         }
         file << endl;
         rep(i, 0, n, 1) {
+            int logt = distrib_logt(gen);
+            uniform_int_distribution<> distrib_t((int)pow(10, logt-1), (int)pow(10, logt));
             int t = distrib_t(gen);
             // int t = n;
             file << t << " ";
