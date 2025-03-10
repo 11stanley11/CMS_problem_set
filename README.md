@@ -93,8 +93,48 @@ by 三忠 44 許友懌, 45許仲亨
 只由一種字元組成 -> 「距離」就是字串長度差
 ### Subtask 2
 利用DP<br>
+(感謝Koala_Will協助)
 #### 狀態: 
 讓 ```dp[i][j]```代表把 $A$ 從```[0]```到```[i]```的子字串改成 $B$ 從```[0]```到```[j]```的子字串的步驟數
+#### 轉移:
+若```word1[i] == word2[i]``` -> ```dp[i][j]==dp[i-1][j-1]```  (簡單，因為新的這一次比較不造成修改)<br>
+else，就舉以下三種情形的最小值做為```dp[i][j]```:<br>
+1.替換一個字母: ```dp[i][j] = dp[i-1][j-1] + 1```<br>
+2.刪除一個字母: ```dp[i][j] = dp[i-1][1] + 1```<br>
+3.加入一個字母: ```dp[i][j] = dp[i][j-1] + 1```<br>
+上Code!
+>```cpp
+> #include <bits/stdc++.h>>
+> using namespace std;
+>
+> string s1, s2;
+> int dp[5005][5005];
+> #define l1 s1.size()
+> #define l2 s2.size()
+>
+> signed main(){
+>     ios_base::sync_with_stdio(0); cin.tie(0);
+> 
+>     cin >> s1 >> s2;
+> 
+>     for(int i=0; i<=l1; i++) dp[i][0] = i;
+>     for(int j=0; j<=l2; j++) dp[0][j] = j;
+> 
+>     for(int i=1; i<=l1; i++){
+>         for(int j=1; j<=l2; j++){
+>             if(s1[i-1] == s2[j-1]){
+>                 dp[i][j] = dp[i-1][j-1];
+>             }
+>             else{
+>                 dp[i][j] = min(min(dp[i-1][j], dp[i][j-1]), dp[i-1][j-1])+1;
+>             }
+>         }
+>     }
+> 
+>     cout << dp[l1][l2];
+> 
+>     return 0;
+> }
 
 ## pE. 東山水果攤
 > 解析參考 https://hackmd.io/@wiwiho/sprout2024-exam-A
