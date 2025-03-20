@@ -40,13 +40,13 @@ by 三忠 44 許友懌, 45許仲亨
 >布林陣列記錄並檢查
 >```cpp
 >#include <bits/stdc++.h>
->signed main()
->int n, m;
->string A, B;
->bool la[26], lb[26];
->{   
->    std::ios::sync_with_stdio(false); std::cin.tie(0);
+>using namespace std;
+>signed main(){
+>    int n, m;
+>    string A, B;
+>    bool la[26], lb[26];
 >    cin >> n >> m >> A >> B;
+>
 >    for(char c : A){
 >        la[c-'a'] = true;
 >    }
@@ -66,15 +66,14 @@ by 三忠 44 許友懌, 45許仲亨
 >```
 
 >set特性排除重複
->```
+>``` cpp
 >#include<bits/stdc++.h>
 >using namespace std;
 >int main(){
->    ios::sync_with_stdio(0); cin.tie(0);
->
 >    int n, m;
 >    string A, B;
 >    cin >> n >> m >> A >> B;
+>
 >    set<char> s;
 >    for(int i=0; i<n; i++){
 >        s.insert(A[i]);
@@ -104,7 +103,7 @@ else，就舉以下三種情形的最小值做為```dp[i][j]```:<br>
 3.加入一個字母: ```dp[i][j] = dp[i][j-1] + 1```<br>
 上Code!
 >```cpp
-> #include <bits/stdc++.h>>
+> #include <bits/stdc++.h>
 > using namespace std;
 >
 > string s1, s2;
@@ -112,9 +111,7 @@ else，就舉以下三種情形的最小值做為```dp[i][j]```:<br>
 > #define l1 s1.size()
 > #define l2 s2.size()
 >
-> signed main(){
->     ios_base::sync_with_stdio(0); cin.tie(0);
-> 
+> int main(){
 >     cin >> s1 >> s2;
 > 
 >     for(int i=0; i<=l1; i++) dp[i][0] = i;
@@ -135,6 +132,65 @@ else，就舉以下三種情形的最小值做為```dp[i][j]```:<br>
 > 
 >     return 0;
 > }
+
+## pD. 道路修復
+> ```cpp
+> #include <bits/stdc++.h>
+> using namespace std;
+> #define int long long
+> #define pii pair<long long, long long>
+> #define PB push_back
+> 
+> int n, m, rt[200010], ans=0;
+> vector<pair<int, pii>> v;
+>
+> int findRT(int city){
+>     return (rt[city] == city) ? city : (rt[city] = findRT(rt[city]));
+> }
+>
+> void join(int i, int j){
+>     if(findRT(i) > findRT(j)) rt[i] = rt[j];
+>     else rt[j] = rt[i];
+> }
+>
+> signed main(){
+>    ios_base::sync_with_stdio(0); cin.tie(0);
+>
+>    cin >> n >> m;
+>    int a, b, c;
+>    for(int i=1; i<=n; i++){
+>        rt[i] = i;
+>    }
+>
+>    for(int i=0; i<m; i++){
+>        cin >> a >> b >> c;
+>        v.PB({c, {a, b}});
+>    }
+>    sort(v.begin(), v.end());
+>
+>    for(auto i : v){
+>        c = i.F; a = i.S.F; b = i.S.S;
+>
+>        a = findRT(a);
+>        b = findRT(b);
+>
+>        if(a == b) continue;
+>        join(a, b);
+>        ans += c;
+>    }
+>
+>    for(int i=2; i<=n; i++){
+>        findRT(i);
+>        if(rt[i] != 1){
+>            cout << "IMPOSSIBLE";
+>            return 0;
+>        }
+>    }
+>
+>    cout << ans;
+>    return 0;
+>}
+> ```
 
 ## pE. 東山水果攤
 > 解析參考 https://hackmd.io/@wiwiho/sprout2024-exam-A
