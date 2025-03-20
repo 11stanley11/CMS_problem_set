@@ -153,9 +153,7 @@ else，就舉以下三種情形的最小值做為```dp[i][j]```:<br>
 >     else rt[j] = rt[i];
 > }
 >
-> signed main(){
->    ios_base::sync_with_stdio(0); cin.tie(0);
->
+> signed main(){>
 >    cin >> n >> m;
 >    int a, b, c;
 >    for(int i=1; i<=n; i++){
